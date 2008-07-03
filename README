@@ -1,0 +1,27 @@
+= disable_timestamps_for
+
+Selectively disable timestamping on specific fields in an ActiveRecord model.
+
+== Basic Usage
+
+Just add disable_timestamps_for to any of your ActiveRecord models and define the field or fields for which you would like to skip timestamping.
+
+	class List < ActiveRecord::Base
+		disable_timestamps_for :position
+	end
+	
+	class ListItem < ActiveRecord::Base
+		disable_timestamps_for [:position, :list_id]
+	end
+	
+Rails will now disable timestamping on updates if these are the only fields that have changed.
+
+== Compatibility
+
+Rails 2.1 + (uses dirty tracking)
+
+== Resources
+
+Install
+
+* .script/plugin install git://github.com/aaronchi/disable_timestamps_for.git
